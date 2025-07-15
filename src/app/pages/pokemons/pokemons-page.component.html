@@ -2,7 +2,7 @@
 <h2 class="text-xl">Pagina actual: {{ currentPage() }}</h2>
 
 <hr class="my-2">
-@if (!isLoading()) {
+@if( pokemons().length === 0 ) {
   <pokemon-list-skeleton />
 } @else {
   <pokemon-list [pokemons]="pokemons()" />
@@ -11,10 +11,17 @@
 <!---- TODOS: Buttons pagination  -->
 
 <div class="flex justify-between">
-  <button class="mt-2" (click)="loadPokemons(- 1)">
+  <button
+    class="mt-2"
+    [routerLink]="['/pokemons/page', currentPage()! - 1]"
+    [disabled]="currentPage() === 1"
+  >
     Anterior
   </button>
-  <button class="mt-2" (click)="loadPokemons(+ 1)">
+  <button
+    class="mt-2"
+    [routerLink]="['/pokemons/page', currentPage()! + 1]"
+  >
     Siguiente
   </button>
 </div>
