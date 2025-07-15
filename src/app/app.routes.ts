@@ -25,4 +25,9 @@ export const routes: Routes = [
     path: '**',
     redirectTo: 'pokemons',
   },
+  {
+    path: '',
+    redirectTo: 'pokemons',
+    pathMatch: 'full',
+  },
 ];
