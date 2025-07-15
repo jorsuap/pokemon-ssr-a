@@ -19,7 +19,7 @@ export class PokemonsService {
       --page;
     }
     page = Math.max(0, page);
-    return this.http.get<PokeAPIResponse>(`${this.baseUrl}/pokemon?limit=20&offset=${page * 20}`).pipe(
+    return this.http.get<PokeAPIResponse>(`${this.baseUrl}pokemon?limit=20&offset=${page * 20}`).pipe(
       map((response) => response.results.map((result) => ({
         name: result.name,
         id: result.url.split('/').at(-2) ?? '',
@@ -28,7 +28,7 @@ export class PokemonsService {
   }
 
   public getPokemon(id: string): Observable<Pokemon> {
-    return this.http.get<Pokemon>(`${this.baseUrl}/pokemon/${id}`);
+    return this.http.get<Pokemon>(`${this.baseUrl}pokemon/${id}`);
   }
 
 }
