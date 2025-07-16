@@ -1,9 +1,10 @@
 <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-3 grid-cols-1">
   @for (pokemon of pokemons(); track pokemon.id) {
     <pokemon-card [pokemon]="pokemon" />
+  } @empty {
+    <!-- si no hay pokemons, se muestra el mensaje de no hay pokemons -->
+    <div class="col-span-5 text-center border-white h-28 flex justify-center items-center">
+      No hay pokemons
+    </div>
   }
-
-  <div class="col-span-5 text-center border-white h-28 flex justify-center items-center">
-    No hay pokemons
-  </div>
 </div>
